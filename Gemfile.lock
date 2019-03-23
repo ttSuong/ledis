@@ -31,7 +31,6 @@ PLATFORMS
 
 DEPENDENCIES
   bundler (~> 1.16)
-  hack_design!
   nokogiri (~> 1.8.1)
   pry (~> 0.11.3)
   rake (~> 10.0)
