@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require './lib/ledis'
+cli = Ledis::CLI.new
+cli.start

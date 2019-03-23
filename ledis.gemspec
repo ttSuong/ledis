@@ -1,16 +1,16 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'redis/version'
+require 'ledis/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "redis"
-  spec.version       = Redis::VERSION
+  spec.name          = "ledis"
+  spec.version       = Ledis::VERSION
   spec.authors       = ["SuongTran"]
   spec.email         = ["suongtran9195@gmail.com"]
 
   spec.summary       = "gem ledis"
-  spec.description   = "follow with redis"
+  spec.description   = "follow with ledis"
   spec.homepage      = "http://localhost:3000"
   spec.license       = "MIT"
 
@@ -32,4 +32,5 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 2.0.1"
   spec.add_development_dependency "rake", "~> 10.0"
+  spec.add_development_dependency "pry", "~> 0.10.4"
 end
