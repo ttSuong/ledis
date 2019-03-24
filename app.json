@@ -1,0 +1,19 @@
+{
+  "addons": [
+
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/ruby"
+    }
+  ],
+  "env": {
+  },
+  "formation": {
+  },
+  "name": "ledis",
+  "scripts": {
+    "postdeploy": "ruby bin\\ledis"
+  },
+  "stack": "heroku-18"
+}
