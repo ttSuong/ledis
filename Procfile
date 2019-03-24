@@ -1,1 +1,1 @@
-web:  ruby bin/ledis
+web:  bundle exec ruby bin/ledis
