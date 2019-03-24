@@ -1,1 +1,1 @@
-worker:  ruby bin/ledis
+web:  ruby bin/ledis
