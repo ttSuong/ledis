@@ -69,7 +69,7 @@ module Ledis
 
       when 'TTL'
         if @result.key?(input_value[1])
-         data =  @result[input_value[1]].get_timeout
+          data =  @result[input_value[1]].get_timeout
         else
           is_success = false
           message = 'ERROR: Key not found'
@@ -137,14 +137,19 @@ module Ledis
           is_success = false
           message = 'ERROR: Key not found'
         else
-          start = 0
-          stop = @result[input_value[1]].get_length
-          if input_value[2] && input_value[3]
-            start = input_value[2].to_i
-            stop = input_value[3].to_i
+          if @result[input_value[1]].is_a?(MyList)
+            start = 0
+            stop = @result[input_value[1]].get_length
+            if input_value[2] && input_value[3]
+              start = input_value[2].to_i
+              stop = input_value[3].to_i
+            end
+            data = @result[input_value[1]].get_range(start, stop)
+            is_success = true
+          else
+            message = 'ERROR: Wrong data type'
+            is_success = false
           end
-          is_success = @result[input_value[1]].is_a?(MyList)
-          is_success ? data = @result[input_value[1]].get_range(start, stop) : message = 'ERROR: Wrong data type'
 
         end
 

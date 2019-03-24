@@ -6,14 +6,14 @@ require 'rack'
 
 cli = Ledis::CLI.new
 
-app = Proc.new do |env|
+@app = Proc.new do |env|
   req = Rack::Request.new(env)
   if req.post?
     data = cli.start(req.body.read)
     [200, {'Content-Type' => 'text/html'},  [data]]
   elsif req.get?
     path = Rack::Utils.unescape(env['PATH_INFO'])
-    index_file = @root + "#{path}app/index.html"
+    index_file = @root + "#{path}app/index.html.erb"
     puts index_file
     if File.exists?(index_file)
       # Return the index
@@ -25,17 +25,4 @@ app = Proc.new do |env|
   end
 
 end
-Rack::Handler::WEBrick.run app
-#
-# puts cli.start('SET a 1')
-# puts cli.start('GET a')
-# puts cli.start('RPUSH  b 1 1 3')
-# puts cli.start('LLEN  b')
-# puts cli.start('LRANGE  b')
-# puts cli.start('LPOP  b')
-# puts cli.start('RPOP  b')
-# puts cli.start('SADD  c 1 1 1 2 3 5 7 9')
-# puts cli.start('SCARD  c')
-# puts cli.start('SMEMBERS  c')
-# puts cli.start('SREM c 1')
-# puts cli.start('SREM c 1')
+Rack::Handler::WEBrick.run @app
