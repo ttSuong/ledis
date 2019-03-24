@@ -12,6 +12,7 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    rack (2.0.6)
     rake (10.5.0)
     slop (3.6.0)
 
@@ -23,6 +24,7 @@ DEPENDENCIES
   bundler (~> 2.0.1)
   ledis!
   pry (~> 0.10.4)
+  rack
   rake (~> 10.0)
 
 BUNDLED WITH
