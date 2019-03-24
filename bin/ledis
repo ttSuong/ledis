@@ -27,7 +27,7 @@ cli = Ledis::CLI.new
 end
 
 webrick_options = {
-  :Port               => 80
+  :Port               => 443
 }
 
 Rack::Handler::WEBrick.run @app, webrick_options
