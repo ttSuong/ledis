@@ -25,4 +25,10 @@ cli = Ledis::CLI.new
   end
 
 end
-Rack::Handler::WEBrick.run @app, :port => 80
+
+webrick_options = {
+  :Port               => 80,
+  :Logger             => WEBrick::Log::new($stderr, WEBrick::Log::DEBUG),
+}
+
+Rack::Handler::WEBrick.run (@app, webrick_options)
