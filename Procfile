@@ -1,1 +1,1 @@
-worker:  bundle exec ruby bin/ledis
+worker:  ruby bin/ledis
