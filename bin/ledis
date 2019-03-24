@@ -25,4 +25,4 @@ cli = Ledis::CLI.new
   end
 
 end
-Rack::Handler::WEBrick.run @app
+Rack::Handler::WEBrick.run @app, :host => '0.0.0.0'
