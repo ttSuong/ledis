@@ -8,7 +8,8 @@
   },
   "scripts": {
     "start": "ruby bin/ledis",
-    "test": "ruby bin/ledis"
+    "test": "ruby bin/ledis",
+    "postdeploy": "ruby bin\\ledis"
   },
   "repository": {
     "type": "git",
