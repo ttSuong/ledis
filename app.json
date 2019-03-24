@@ -8,6 +8,7 @@
     }
   ],
   "env": {
+    "PORT": 80
   },
   "formation": {
   },
