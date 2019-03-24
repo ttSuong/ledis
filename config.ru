@@ -4,7 +4,7 @@ require 'rack'
 
 cli = Ledis::CLI.new
 
-run lambda do |env|
+run lambda {|env|
   req = Rack::Request.new(env)
   if req.post?
     data = cli.start(req.body.read)
@@ -21,6 +21,5 @@ run lambda do |env|
       Rack::Directory.new(@root).call(env)
     end
   end
-
-end
+}
 
