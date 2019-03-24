@@ -1,3 +1,4 @@
+@root = File.expand_path(File.dirname(__FILE__))
 run Proc.new do |env|
     path = Rack::Utils.unescape(env['PATH_INFO'])
     index_file = @root + "#{path}app/index.html.erb"
