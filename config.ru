@@ -4,7 +4,7 @@ require 'rack'
 
 cli = Ledis::CLI.new
 
-@app = Proc.new do |env|
+run lambda do |env|
   req = Rack::Request.new(env)
   if req.post?
     data = cli.start(req.body.read)
@@ -24,4 +24,3 @@ cli = Ledis::CLI.new
 
 end
 
-Rack::Handler::WEBrick.run @app
