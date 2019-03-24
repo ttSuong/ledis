@@ -25,7 +25,14 @@ Use Ruby for project because ruby support many functions to completed project fa
 
  
 3. Web cli
-        
+
+    #Installation
+    $ gem build ledis-cli.gemspec
+    $ gem install --local ledis-cli
+    $ ledis-cli
+    
+    
+    
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
