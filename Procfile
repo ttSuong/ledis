@@ -1,1 +1,1 @@
-worker: node app.js
+worker:  bundle exec ruby bin/ledis
