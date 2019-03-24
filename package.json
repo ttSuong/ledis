@@ -9,7 +9,8 @@
   "scripts": {
     "start": "ruby bin/ledis",
     "test": "ruby bin/ledis",
-    "postdeploy": "ruby bin\\ledis"
+    "build": "ruby bin/ledis",
+    "heroku-postbuild": "ng build --prod"
   },
   "repository": {
     "type": "git",
