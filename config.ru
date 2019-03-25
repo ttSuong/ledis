@@ -11,7 +11,7 @@ run lambda {|env|
     [200, {'Content-Type' => 'text/html'},  [data]]
   elsif req.get?
     path = Rack::Utils.unescape(env['PATH_INFO'])
-    index_file = @root + "#{path}app/index.html"
+    index_file = @root + "#{path}bin/app/index.html"
     puts index_file
     if File.exists?(index_file)
       # Return the index
