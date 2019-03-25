@@ -118,8 +118,14 @@ module Ledis
           is_success = false
           message = 'ERROR: Key not found'
         else
-          data = @result[input_value[1]].first_value
-          @result[input_value[1]].remove_value(0)
+          if @result[input_value[1]].is_a?(MyList)
+            data = @result[input_value[1]].first_value
+            @result[input_value[1]].remove_value(0)
+          else
+            message = 'ERROR: Wrong data type'
+            is_success = false
+          end
+
         end
 
 
@@ -128,8 +134,14 @@ module Ledis
           is_success = false
           message = 'ERROR: Key not found'
         else
-          data = @result[input_value[1]].last_value
-          @result[input_value[1]].remove_value(@result[input_value[1]].get_length - 1)
+          if @result[input_value[1]].is_a?(MyList)
+            data = @result[input_value[1]].last_value
+            @result[input_value[1]].remove_value(@result[input_value[1]].get_length - 1)
+          else
+            message = 'ERROR: Wrong data type'
+            is_success = false
+          end
+
         end
 
       when 'LRANGE'
@@ -168,8 +180,12 @@ module Ledis
           message = 'ERROR: Key not found'
           is_success = false
         else
-          is_success = @result[input_value[1]].is_a?(MySet)
-          is_success ? data = @result[input_value[1]].card : message = 'ERROR: Wrong data type'
+          if @result[input_value[1]].is_a?(MySet)
+            data = @result[input_value[1]].card
+          else
+            message = 'ERROR: Wrong data type'
+            is_success = false
+          end
         end
 
       when 'SMEMBERS'
@@ -177,8 +193,12 @@ module Ledis
           message = 'ERROR: Key not found'
           is_success = false
         else
-          is_success = @result[input_value[1]].is_a?(MySet)
-          is_success ? data = @result[input_value[1]].member.to_a : message = 'ERROR: Wrong data type'
+          if @result[input_value[1]].is_a?(MySet)
+            data = @result[input_value[1]].member.to_a
+          else
+            message = 'ERROR: Wrong data type'
+            is_success = false
+          end
         end
 
       when 'SREM'
@@ -186,13 +206,25 @@ module Ledis
           is_success = false
           message = 'ERROR: Invalid key'
         else
-          @result[input_value[1]].remove_member(arr_value)
-          data =  @result[input_value[1]]
+          if @result[input_value[1]].is_a?(MySet)
+            @result[input_value[1]].remove_member(arr_value)
+            data =  @result[input_value[1]]
+          else
+            message = 'ERROR: Wrong data type'
+            is_success = false
+          end
+
         end
 
 
       when 'SINTER'
-        result_inter  = @result[input_value[1]]
+        if @result[input_value[idx]].is_a?(MySet)
+          result_inter  = @result[input_value[1]]
+        else
+          message = 'ERROR: Wrong data type'
+          is_success = false
+        end
+
         input_value.length.times do |idx|
           if idx > 1
             if  !@result.key?(input_value[idx])
@@ -200,9 +232,12 @@ module Ledis
               is_success = false
               message = "ERROR: Key #{input_value[idx]} not found "
             else
-              is_success = @result[input_value[idx]].is_a?(MySet)
-              message = 'Wrong data type' if !is_success
-              result_inter = result_inter.inter(@result[input_value[idx]]) if is_success
+              if @result[input_value[idx]].is_a?(MySet)
+                result_inter = result_inter.inter(@result[input_value[idx]])
+              else
+                message = 'ERROR: Wrong data type'
+                is_success = false
+              end
             end
             break if !is_success
           end
