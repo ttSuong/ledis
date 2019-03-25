@@ -6,16 +6,16 @@ https://ledisapp.herokuapp.com
       POST  HTTP/1.1
       Host: ledisapp.herokuapp.com
       Cache-Control: no-cache
-      Body: command
+      Body: <command>
       
  
 # Describe my design
 * Language: Ruby
 * Framework / lib : rack, rest-client
 
-Use Ruby for project because ruby support many functions to completed project faster. 
-Rack: Ruby Webserver Interface. It provides a minimal interface between webservers that support Ruby and Ruby frameworks
-
+- Use Ruby for project because ruby support many functions to completed project faster. 
+- Rack: Ruby Webserver Interface. It provides a minimal interface between webservers that support Ruby and Ruby frameworks
+- Rest-client: Support call webserver interface.
 1. Interface
     # Detail
     - Build a server via HTTP to another call gem can use Ledis
@@ -23,13 +23,12 @@ Rack: Ruby Webserver Interface. It provides a minimal interface between webserve
     - 2 method built for this server : POST / GET
     * POST
         - user will enter input (list command request as below), server will response data with json 
-        - format data 
-        {
-            data = [],
-            status: true/false,
-            message: ''
-        }
-        
+        ## Data Examples
+            {
+                data: [],
+                status: true / false, 
+                message = ''
+            }
     * GET
         - show page index
     # Usage
@@ -37,14 +36,14 @@ Rack: Ruby Webserver Interface. It provides a minimal interface between webserve
 * String: 
         - SET key value
         - GET key
-    * List:
+    * List
         - LLEN key
         - RPUSH key value1 [value2...]
         - LPOP key
         - RPOP key
         - LRANGE key start stop
         
-     * Set:
+     * Set
         - SADD key value1 [value2...]
         - SCARD key
         - SMEMBERS key
@@ -60,15 +59,27 @@ Rack: Ruby Webserver Interface. It provides a minimal interface between webserve
       * Snapshot
         - SAVE
         - RESTORE
+        
  
 3. Web cli
 
-    # Installation
-     gem build ledis.gemspec
-     gem install --local ledis-cli
-     ledis-cli
-     # Usage
-     This web cli support call interface above. 
+   ## Installing
+   
+   A step by step series of examples that tell you how to get a development env running
+   
+   Say what the step will be
+   ```
+   $ git clone https://github.com/ttSuong/ledis
+   $ cd ledis
+   $ rake build
+   $ gem install pkg/ledis-cli-0.1.0.gem
+   ```
+   Usage
+   ```
+   From within ledis/lib run,
+   
+   $ ledis-cli
+   ```
     
 ## License
 
