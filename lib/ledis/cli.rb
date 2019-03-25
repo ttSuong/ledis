@@ -26,7 +26,7 @@ module Ledis
       case input_value[0].upcase
         # snapshot
       when 'SAVE'
-        @data_backup << @result
+        @data_backup << @result.clone
         @data_backup.each do |backup|
           backup.each do |key, value|
             data << {'key': key}
@@ -34,10 +34,10 @@ module Ledis
         end
 
       when 'RESTORE'
-        @data_backup.last.each do |key, value|
+        @result = @data_backup.last
+        @result.each do |key, value|
           data << {'key': key}
         end
-        @result = @data_backup.last
         # summary input
       when 'KEYS'
         @result.each do |key, value|
@@ -59,6 +59,7 @@ module Ledis
 
       when 'FLUSHDB'
         @result = {}
+
       when 'EXPIRE'
         expired_time = Time.now + input_value[2].to_i
         if @result.key?(input_value[1])
