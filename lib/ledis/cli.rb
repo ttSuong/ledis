@@ -33,7 +33,9 @@ module Ledis
 
       when 'RESTORE'
         @result = @data_backup.last
-        data = @result
+        @result.each do |key, value|
+          data << {'key': key}
+        end
         # summary input
       when 'KEYS'
         @result.each do |key, value|
@@ -42,12 +44,11 @@ module Ledis
           end
         end
         data = {'key': @result.keys}
-
       when 'DEL'
         if @result.key?(input_value[1])
           @result.delete(input_value[1])
           @result.each do |key, value|
-            data << {'key': key, 'value': value}
+            data << {'key': key}
           end
         else
           is_success = false
