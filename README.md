@@ -77,7 +77,7 @@ https://ledisapp.herokuapp.com
    $ rake build
    $ gem install pkg/ledis-cli-0.1.0.gem
    ```
-   Usage
+   ## Usage
    ```
    From within ledis/lib run,
    
