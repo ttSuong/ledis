@@ -19,23 +19,23 @@ https://ledisapp.herokuapp.com
 * Rack: Ruby Webserver Interface. It provides a minimal interface between webservers that support Ruby and Ruby frameworks
 * Rest-client: Support call webserver interface.
 
-### 1. Interface
-    # Detail
-    - Build a server via HTTP to another call gem can use Ledis
-    - Use Rack gem to build it.
-    - 2 method built for this server : POST / GET
-    * POST
-        - user will enter input (list command request as below), server will response data with json 
-        ## Data Examples
+# 1. Interface
+    ## Detail
+   * Build a server via HTTP to another call gem can use Ledis
+   * Use Rack gem to build it.
+   * 2 method built for this server : POST / GET
+   * POST
+        * User will enter input (list command request as below), server will response data with json 
+        ### Data Examples
             {
                 data: [],
                 status: true / false, 
                 message = ''
             }
-    * GET
+   * GET
         - show page index
-    # Usage
-### 2. Commands
+        
+# 2. Commands
     
     * String
         - SET key value
@@ -64,7 +64,7 @@ https://ledisapp.herokuapp.com
         - SAVE
         - RESTORE
  
-### 3. Web CLI
+# 3. Web CLI
 
    ## Installing
    
