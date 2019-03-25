@@ -220,30 +220,29 @@ module Ledis
       when 'SINTER'
         if @result[input_value[1]].is_a?(MySet)
           result_inter  = @result[input_value[1]]
+          input_value.length.times do |idx|
+            if idx > 1
+              if  !@result.key?(input_value[idx])
+                result_inter = []
+                is_success = false
+                message = "ERROR: Key #{input_value[idx]} not found "
+              else
+                if @result[input_value[idx]].is_a?(MySet)
+                  result_inter = result_inter.inter(@result[input_value[idx]])
+                else
+                  message = 'ERROR: Wrong data type'
+                  is_success = false
+                end
+              end
+              break if !is_success
+            end
+
+          end
+          data = result_inter.member.to_a.sort
         else
           message = 'ERROR: Wrong data type'
           is_success = false
         end
-
-        input_value.length.times do |idx|
-          if idx > 1
-            if  !@result.key?(input_value[idx])
-              result_inter = []
-              is_success = false
-              message = "ERROR: Key #{input_value[idx]} not found "
-            else
-              if @result[input_value[idx]].is_a?(MySet)
-                result_inter = result_inter.inter(@result[input_value[idx]])
-              else
-                message = 'ERROR: Wrong data type'
-                is_success = false
-              end
-            end
-            break if !is_success
-          end
-
-        end
-        data = result_inter.member.to_a.sort
       end
       # end cases
 
