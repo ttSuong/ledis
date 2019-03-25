@@ -16,7 +16,7 @@ class MySet < MyTimer
   end
 
   def remove_member(value)
-    @set = @set - Set[value]
+    @set = @set - Set.new(value)
   end
 
   def inter(other)
