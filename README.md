@@ -20,7 +20,7 @@ https://ledisapp.herokuapp.com
 * Rest-client: Support call webserver interface.
 
 # 1. Interface
-    ## Detail
+   # Detail
    * Build a server via HTTP to another call gem can use Ledis
    * Use Rack gem to build it.
    * 2 method built for this server : POST / GET
@@ -82,6 +82,7 @@ https://ledisapp.herokuapp.com
    From within ledis/lib run,
    
    $ ledis-cli
+   Enter 'exit' to stop
    ```
     
 ## License
