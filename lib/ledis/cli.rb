@@ -34,10 +34,10 @@ module Ledis
         end
 
       when 'RESTORE'
-        @result = @data_backup.last
-        @result.each do |key, value|
+        @data_backup.last.each do |key, value|
           data << {'key': key}
         end
+        @result = @data_backup.last
         # summary input
       when 'KEYS'
         @result.each do |key, value|
