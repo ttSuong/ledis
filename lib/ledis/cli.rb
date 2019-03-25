@@ -218,7 +218,7 @@ module Ledis
 
 
       when 'SINTER'
-        if @result[input_value[idx]].is_a?(MySet)
+        if @result[input_value[1]].is_a?(MySet)
           result_inter  = @result[input_value[1]]
         else
           message = 'ERROR: Wrong data type'
