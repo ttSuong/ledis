@@ -19,7 +19,7 @@ module Ledis
         arr_value << input_value[idx] if idx > 1
       end
 
-      if @result.key?(input_value[1]) && @result[input_value[1]].is_expired
+      if @result && @result.key?(input_value[1]) && @result[input_value[1]].is_expired
         @result.delete(input_value[1])
       end
 
@@ -29,20 +29,22 @@ module Ledis
         @data_backup << @result.clone
           @data_backup.last.each do |key, value|
             data << {'key': key}
-        end
+        end if @data_backup
 
       when 'RESTORE'
+        @result = {}
         @result = @data_backup.last
         @result.each do |key, value|
+          @result[key].set_timeout(nil)
           data << {'key': key}
-        end
+        end if @result
         # summary input
       when 'KEYS'
         @result.each do |key, value|
           if @result[key].is_expired
             @result.delete(key)
           end
-        end
+        end if @result
         data = {'key': @result.keys}
       when 'DEL'
         if @result.key?(input_value[1])
