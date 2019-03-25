@@ -36,7 +36,7 @@ https://ledisapp.herokuapp.com
         - show page index
     # Usage
 ### 2. Commands
-    ```
+    
     * String
         - SET key value
         - GET key
@@ -63,7 +63,6 @@ https://ledisapp.herokuapp.com
       * Snapshot
         - SAVE
         - RESTORE
-     ```    
  
 ### 3. Web CLI
 
