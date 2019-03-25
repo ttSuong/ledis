@@ -27,9 +27,8 @@ module Ledis
         # snapshot
       when 'SAVE'
         @data_backup << @result
-        @data_backup
         @result.each do |key, value|
-          data << {'key': key, 'value': value}
+          data << {'key': key}
         end
 
       when 'RESTORE'
