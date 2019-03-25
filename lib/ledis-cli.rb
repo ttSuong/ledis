@@ -3,7 +3,7 @@ require 'json'
 while true
   printf 'cli>'
   input = gets.chomp
-  url = Ledis::URL
+  url = 'https://ledisapp.herokuapp.com'
   if input.length > 0
    begin
      response = RestClient.post(url, input)

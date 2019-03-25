@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'ledis/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "ledis"
+  spec.name          = "ledis-cli"
   spec.version       = Ledis::VERSION
   spec.authors       = ["SuongTran"]
   spec.email         = ["suongtran9195@gmail.com"]
@@ -23,7 +23,7 @@ Gem::Specification.new do |spec|
       "public gem pushes."
   end
 
-  spec.files         = ["bin/ledis"]
+  spec.files         = ["lib/ledis-cli.rb"]
   spec.bindir        = "exe"
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
