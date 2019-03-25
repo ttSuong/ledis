@@ -5,6 +5,7 @@ while true
   input = gets.chomp
   url = 'https://ledisapp.herokuapp.com'
   if input.length > 0
+    break input == 'exit'
    begin
      response = RestClient.post(url, input)
      response = JSON.parse(response)
