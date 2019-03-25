@@ -208,7 +208,7 @@ module Ledis
         else
           if @result[input_value[1]].is_a?(MySet)
             @result[input_value[1]].remove_member(arr_value)
-            data =  @result[input_value[1]]
+            data =  @result[input_value[1]].member.to_a
           else
             message = 'ERROR: Wrong data type'
             is_success = false
